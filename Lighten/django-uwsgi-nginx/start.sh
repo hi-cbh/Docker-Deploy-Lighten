@@ -17,7 +17,7 @@ if docker ps -a | grep -i lighten; then
                --link mysql:mysql \
                -v /root/git_repo/Lighten/:/home/docker/code/Lighten \
                --name webapp-lighten \
-               -p 80:80 \
+               -p 8000:80 \
            lighten
 else
     # 第一次创建容器时需要更新数据库
@@ -25,7 +25,7 @@ else
                --link mysql:mysql \
                -v /root/git_repo/Lighten/:/home/docker/code/Lighten \
                --name webapp-lighten \
-               -p 80:80 \
+               -p 8000:80 \
            lighten \
            sh -c 'python /home/docker/code/Lighten/manage.py migrate && supervisord -n'
 fi
